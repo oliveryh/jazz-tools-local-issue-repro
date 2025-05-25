@@ -51,6 +51,11 @@
                 @change="toggleTodo(todo)"
               />
               <span :class="{ completed: todo?.completed }">{{ todo?.name }}</span>
+              <span>{{ todo?.stringAttributeOne }}</span>
+              <span>{{ todo?.stringAttributeTwo }}</span>
+              <span>{{ todo?.stringAttributeThree }}</span>
+              <span>{{ todo?.stringAttributeFour }}</span>
+              <span>{{ todo?.stringAttributeFive }}</span>
             </label>
             <button class="btn btn-icon" @click="deleteTodo(todo?.id)">
               <span class="material-icons">delete</span>
