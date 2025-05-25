@@ -25,15 +25,18 @@ export class ToDoAccount extends Account {
   migrate() {
     if (!this._refs.root) {
       const group = Group.create({ owner: this });
-      const exampleTodo = ToDoItem.create(
-        { name: "Example todo", completed: false },
-        { owner: group },
+      // Migrate with 500 items
+      const exampleTodos = Array.from({ length: 500 }, (_, i) =>
+        ToDoItem.create({
+          name: `Example Todo ${i + 1}`,
+          completed: false,
+        }, { owner: group }),
       );
 
       const defaultFolder = Folder.create(
         {
           name: "Default",
-          items: ToDoList.create([exampleTodo], { owner: group }),
+          items: ToDoList.create(exampleTodos, { owner: group }),
         },
         { owner: group },
       );
